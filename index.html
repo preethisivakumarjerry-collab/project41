@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Flex</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+      padding: 40px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    h2 {
+      font-weight: bold;
+      margin-bottom: 30px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    /* FLEX CONTAINER */
+    .container-flex {
+      background: #ffffff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: 0.4s;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .container-flex.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .container-flex:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    /* BOX STYLE */
+    .box {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(45deg, #007bff, #00c6ff);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 8px;
+      border-radius: 10px;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    .box:hover {
+      transform: translateY(-10px) scale(1.1);
+      background: linear-gradient(45deg, #28a745, #20c997);
+    }
+
+    /* FADE ANIMATION */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    h4 {
+      margin-top: 30px;
+      font-weight: bold;
+      color: #333;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="container text-center">
+
+<h2>✨Flex</h2>
+
+<!-- d-flex -->
+<h4>d-flex</h4>
+<div class="d-flex container-flex">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+
+<!-- Justify -->
+<h4>Justify Content</h4>
+
+<div class="d-flex justify-content-start container-flex">
+  <div class="box">A</div>
+  <div class="box">B</div>
+</div>
+
+<div class="d-flex justify-content-center container-flex">
+  <div class="box">A</div>
+  <div class="box">B</div>
+</div>
+
+<div class="d-flex justify-content-between container-flex">
+  <div class="box">A</div>
+  <div class="box">B</div>
+</div>
+
+<!-- Align -->
+<h4>Align Items</h4>
+<div class="d-flex align-items-center container-flex" style="height:150px;">
+  <div class="box">X</div>
+  <div class="box">Y</div>
+</div>
+
+<!-- Direction -->
+<h4>Flex Direction</h4>
+<div class="d-flex flex-column container-flex">
+  <div class="box">1</div>
+  <div class="box">2</div>
+</div>
+
+<!-- Wrap -->
+<h4>Flex Wrap</h4>
+<div class="d-flex flex-wrap container-flex">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+</div>
+
+<!-- Order -->
+<h4>Order</h4>
+<div class="d-flex container-flex">
+  <div class="box order-3">1</div>
+  <div class="box order-1">2</div>
+  <div class="box order-2">3</div>
+</div>
+
+<!-- Auto Margin -->
+<h4>Auto Margin</h4>
+<div class="d-flex container-flex">
+  <div class="box">Left</div>
+  <div class="box ml-auto">Right</div>
+</div>
+
+</div>
+
+<!-- SCROLL ANIMATION -->
+<script>
+  const items = document.querySelectorAll('.container-flex');
+
+  window.addEventListener('scroll', () => {
+    items.forEach(item => {
+      const top = item.getBoundingClientRect().top;
+      const screenHeight = window.innerHeight;
+
+      if (top < screenHeight - 100) {
+        item.classList.add('show');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
